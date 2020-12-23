@@ -3,6 +3,7 @@ const path= require('path');
 const csrf = require('csurf')
 const flash = require('connect-flash')
 const mongoose = require('mongoose')
+const favicon = require('serve-favicon')
 // const helmet = require('helmet')
 // const helmetCsp = require('helmet-csp')
 const compression = require('compression')
@@ -53,6 +54,7 @@ app.set('views', 'view');
 // })
 
 app.use(express.static(path.join(__dirname, 'public')));
+app.use(favicon(__dirname, 'public/favicon.ico'))
 app.use('/images', express.static(path.join(__dirname, 'images')));
 app.use(express.urlencoded({extended: true}));
 app.use(session({
